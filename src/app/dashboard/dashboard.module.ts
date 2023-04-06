@@ -8,6 +8,7 @@ import { InventoryCreateComponent } from './pages/inventory-create/inventory-cre
 import { SalesCreateComponent } from './pages/sales-create/sales-create.component';
 import { SalesComponent } from './pages/sales/sales.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DashboardLayoutComponent } from './components/templates/dashboard-layout/dashboard-layout.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './pages/home/home.component';
     InventoryCreateComponent,
     SalesCreateComponent,
     SalesComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     CommonModule,
