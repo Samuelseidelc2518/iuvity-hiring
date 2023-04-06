@@ -9,27 +9,27 @@
             <label for="exampleInputEmail1">Correo</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                 formControlName="email" />
-            <span class="text-muted" *ngIf="formControls.email.hasError('required') && 
+            <span class="text-muted" @fadeIn *ngIf="formControls.email.hasError('required') && 
                 formControls.email.touched">El correo es obligatorio</span>
-            <span class="text-muted" *ngIf="formControls.email.hasError('pattern') && 
+            <span class="text-muted" @fadeIn *ngIf="formControls.email.hasError('pattern') && 
                 formControls.email.touched">El correo es inválido</span>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" />
-            <span class="text-muted" *ngIf="formControls.password.hasError('required') && 
+            <span class="text-muted" @fadeIn *ngIf="formControls.password.hasError('required') && 
             formControls.password.touched">La contraseña es obligatoria</span>
-            <span class="text-muted" *ngIf="formControls.password.hasError('minlength') && 
+            <span class="text-muted" @fadeIn *ngIf="formControls.password.hasError('minlength') && 
             formControls.password.touched">El mínimo de la contraseña es de 6 caracteres</span>
-            <span class="text-muted" *ngIf="formControls.password.hasError('maxlength') && 
+            <span class="text-muted" @fadeIn *ngIf="formControls.password.hasError('maxlength') && 
             formControls.password.touched">El máximo de la contraseña es de 16 caracteres</span>
         </div>
         <div class="d-flex justify-content-center my-3">
             <span>¿No tiene cuenta? Registrese <a href="/auth/register">aquí</a></span>
         </div>
         <button type="submit" class="btn btn-lg btn-dark btn-block" [disabled]="loading">
-            <i *ngIf="loading" class="mdi mdi-loading mdi-spin"></i>
-            <span *ngIf="!loading">Ingresar</span>
+            <i @fadeIn *ngIf="loading" class="mdi mdi-loading mdi-spin"></i>
+            <span @fadeIn *ngIf="!loading">Ingresar</span>
         </button>
     </form>
 </div>

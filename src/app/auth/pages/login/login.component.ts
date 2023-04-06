@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 import { Auth } from '../../models/auth.model';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormsService } from '../../../core/services/forms.service';
+import { FadeIn } from 'src/app/core/animations/fadeIn.animation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: FadeIn.animations,
 })
 export class LoginComponent implements OnInit {
   /* Variables */
@@ -24,7 +27,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private formsService: FormsService
   ) {
     this.loginForm = this.formBuilder.group({
       email: [
@@ -52,8 +56,8 @@ export class LoginComponent implements OnInit {
   /* Methods */
 
   async onSignIn() {
-    if (this.loginForm.invalid) {
-      this.validateAllFormFields(this.loginForm);
+    if (this.loginForm.invalid || this.loading) {
+      this.formsService.validateAllFormFields(this.loginForm);
       return;
     }
 
@@ -79,15 +83,4 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
 }
