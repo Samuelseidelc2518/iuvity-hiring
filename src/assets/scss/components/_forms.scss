@@ -1,0 +1,28 @@
+.form {
+  $self: &;
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    #{$self}-signin {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      & label,
+      & .text-muted {
+        width: 100%;
+        text-align: left;
+        display: block;
+      }
+      & .text-muted {
+        color: red !important;
+        font-size: 14px;
+      }
+    }
+  }
+}

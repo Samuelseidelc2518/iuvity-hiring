@@ -1,0 +1,49 @@
+/* Responsive mixins */
+
+@mixin small {
+  @media only screen and (min-width: #{$small}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media only screen and (min-width: #{$medium}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (min-width: #{$large}) {
+    @content;
+  }
+}
+
+@mixin extra-large {
+  @media only screen and (min-width: #{$extra-large}) {
+    @content;
+  }
+}
+
+@mixin full {
+  @media only screen and (min-width: #{$full}) {
+    @content;
+  }
+}
+
+@mixin HD {
+  @media only screen and (min-width: #{$HD}) {
+    @content;
+  }
+}
+
+@mixin FHD {
+  @media only screen and (min-width: #{$FHD}) {
+    @content;
+  }
+}
+
+/* Transitions mixins */
+
+@mixin transition($time) {
+  transition: all $time ease-in-out;
+}
