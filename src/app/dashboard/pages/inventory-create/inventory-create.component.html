@@ -1,4 +1,47 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Listado de productos</h1>
+    <h1 class="h3 mb-0 text-gray-800">Crear producto</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-xl-4">
+        <div class="card p-3">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" formControlName="name"
+                        placeholder="Ej: Camisa color negro">
+                    <!-- Validations -->
+                    <span class="text-muted" @fadeIn *ngIf="form.name.hasError('required') && 
+                        form.name.touched">El nombre es obligatorio</span>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <input type="text" class="form-control" id="description" formControlName="description"
+                        placeholder="Ej: Camisa de algodón sintético">
+                    <!-- Validations -->
+                    <span class="text-muted" @fadeIn *ngIf="form.description.hasError('required') && 
+                    form.description.touched">La Descripción es obligatoria</span>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" class="form-control" id="quantity" formControlName="quantity"
+                        placeholder="Ej: 10">
+                    <!-- Validations -->
+                    <span class="text-muted" @fadeIn *ngIf="form.quantity.hasError('required') && 
+                    form.quantity.touched">La cantidad es obligatoria</span>
+                </div>
+                <div class="form-row justify-content-center">
+                    <button type="submit" class="btn btn-primary mr-2">
+                        <i @fadeIn *ngIf="loading" class="mdi mdi-loading mdi-spin"></i>
+                        <span @fadeIn *ngIf="!loading">Crear</span>
+                    </button>
+                    <button class="btn btn-danger" routerLink="/dashboard/inventory/list">
+                        <span>Cancelar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

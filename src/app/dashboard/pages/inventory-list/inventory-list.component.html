@@ -1,4 +1,47 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Crear producto</h1>
+    <h1 class="h3 mb-0 text-gray-800">Listado de productos</h1>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <caption>Productos registrados en el sistema</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr @fadeIn *ngIf="loading">
+                        <td colspan="5" class="text-center">
+                            <i class="mdi mdi-loading mdi-spin"></i>
+                        </td>
+                    </tr>
+                    <tr @fadeIn *ngIf="results.length === 0 && !loading">
+                        <td colspan="5" class="text-center">No hay productos registrados</td>
+                    </tr>
+                    <tr *ngFor="let product of products; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.quantity | number }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-rounded">
+                                <i class="mdi mdi-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ngb-pagination @fadeIn *ngIf="results.length >= pageSize" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshResults()">
+        </ngb-pagination>
+    </div>
 </div>

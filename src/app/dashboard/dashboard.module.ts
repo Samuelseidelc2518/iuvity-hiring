@@ -7,6 +7,8 @@ import { InventoryCreateComponent } from './pages/inventory-create/inventory-cre
 import { SalesComponent } from './pages/sales/sales.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './dashboard.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,12 @@ import { DashboardComponent } from './dashboard.component';
     HomeComponent,
     DashboardComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class DashboardModule {}
